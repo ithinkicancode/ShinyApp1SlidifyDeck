@@ -27,33 +27,7 @@ The stock information is presented in graphs for each selected company. Multiple
 
 Here is an example of the graph. This is generated using an R packaged named quantmod.
 
-```{r qplot, message=FALSE, echo=FALSE}
-
-library (quantmod)
-
-require_symbol <- function(symbol, envir = parent.frame()) {
-
-    if (is.null(envir[[symbol]])) {
-        envir[[symbol]] <- getSymbols(symbol, auto.assign = FALSE)
-    }
-    envir[[symbol]]
-}
-
-symbol_env <- new.env()
-
-make_chart <- function(symbol) {
-    symbol_data <- require_symbol(symbol, symbol_env)
-
-    chartSeries(symbol_data,
-                name = symbol,
-                type = "line",
-                subset = paste("last", "3", "weeks"),
-                theme = "white")
-}
-
-make_chart("AAPL")
-
-```
+![plot of chunk qplot](assets/fig/qplot.png) 
 
 ---
 
